@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>MyPictureMemory</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+
+  <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="../node_modules/popper.js/dist/popper.min.js"></script>
+  <script type="text/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
+  <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <button id="btn-select-images" type="button" class="btn btn-primary mt-3">Bilder auswählen</button>
+    <button id="btn-quit" type="button" class="btn btn-primary mt-3">Beenden</button>
+  </div>
+  <div class="container bg-light border border-primary rounded m-4 px-3 pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="bilder_container" class="row" py-3>
+            <!--Hier werden vom Programm die FlipCards eingefügt-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./index.js"></script>
+</body>
+
+</html>
