@@ -13,8 +13,8 @@
   "author": "Stefan Eder",
   "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/MasterEda92/my-picture-memory"
+    "type": "git",
+    "url": "https://github.com/MasterEda92/my-picture-memory"
   },
   "devDependencies": {
     "electron-packager": "^13.1.1",
