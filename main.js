@@ -71,15 +71,11 @@ if (process.platform === 'darwin')
 const menu = Menu.buildFromTemplate(template);
 Menu.setApplicationMenu(menu);
 
-// Behalten Sie eine globale Referenz auf das Fensterobjekt. 
-// Wenn Sie dies nicht tun, wird das Fenster automatisch geschlossen, 
-// sobald das Objekt dem JavaScript-Garbagekollektor übergeben wird.
-
 let win;
 
 function createWindow () 
 {
-  // Erstellen des Browser-Fensters.
+  // create browser window
   win = new BrowserWindow(
   { width: 1000,
     height: 700, 
@@ -88,38 +84,26 @@ function createWindow ()
     webPreferences: { nodeIntegration: true }
   });
 
-  // und Laden der index.html der App.
+  // load index.html
   win.loadFile(path.join (__dirname, 'src', 'index.html'));
 
-  // Öffnen der DevTools.
   //win.webContents.openDevTools();
 
-  // Ausgegeben, wenn das Fenster geschlossen wird.
   win.on('closed', () => 
   {
-    // Dereferenzieren des Fensterobjekts, normalerweise würden Sie Fenster
-    // in einem Array speichern, falls Ihre App mehrere Fenster unterstützt. 
-    // Das ist der Zeitpunkt, an dem Sie das zugehörige Element löschen sollten.
     win = null;
   });
 
-  // Fenster anzeigen wenn bereit
   win.once('ready-to-show', () => 
   {
     win.show();
   });
 }
 
-// Diese Methode wird aufgerufen, wenn Electron mit der
-// Initialisierung fertig ist und Browserfenster erschaffen kann.
-// Einige APIs können nur nach dem Auftreten dieses Events genutzt werden.
 app.on('ready', createWindow);
 
-// Verlassen, wenn alle Fenster geschlossen sind.
 app.on('window-all-closed', () => 
 {
-  // Unter macOS ist es üblich, für Apps und ihre Menu Bar
-  // aktiv zu bleiben, bis der Nutzer explizit mit Cmd + Q die App beendet.
   if (process.platform !== 'darwin') 
   {
     app.quit();
@@ -128,19 +112,13 @@ app.on('window-all-closed', () =>
 
 app.on('activate', () => 
 {
-  // Unter macOS ist es üblich ein neues Fenster der App zu erstellen, wenn
-  // das Dock Icon angeklickt wird und keine anderen Fenster offen sind.
   if (win === null) 
   {
     createWindow();
   }
 });
 
-// In dieser Datei können Sie den Rest des App-spezifischen 
-// Hauptprozess-Codes einbinden. Sie können den Code auch 
-// auf mehrere Dateien aufteilen und diese hier einbinden.
-
-// Elemente des Arrays durchmischen
+// shuffle array
 function arrayShuffle ()
 {
   let tmp, rand;
@@ -154,7 +132,7 @@ function arrayShuffle ()
 }
 Array.prototype.shuffle = arrayShuffle;
 
-// Bilder ermitteln
+// select images from file system
 function getImages ()
 {
     const options =
@@ -169,13 +147,13 @@ function getImages ()
     };
 
     let Images1 = dialog.showOpenDialog (null, options);
-    let Images2 = Images1.slice(); // Bilder duplizieren da wir ja immer 2 davon brauchen
-    let Images = Images1.concat(Images2); // Arrays zusammenfügen
-    Images.shuffle (); // Elemente des Arrays durchmischen
+    let Images2 = Images1.slice(); // duplicate images
+    let Images = Images1.concat(Images2); // merge arrays
+    Images.shuffle (); // shuffle images
     return Images;
 }
 
-// Bilder auswählen und an Renderer-Prozess schicken
+// select images and send to renderer process
 ipcMain.on('get-images', (event, arg) => 
 {  
   var Images = getImages();
@@ -183,7 +161,7 @@ ipcMain.on('get-images', (event, arg) =>
     event.reply ('get-images-reply', Images);
 });
 
-// App beenden
+// quit app on click
 ipcMain.on('quit-app', (event, arg) => 
 {
   app.quit ();
