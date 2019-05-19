@@ -1,7 +1,7 @@
 {
   "name": "my-picture-memory",
   "productName": "MyPictureMemory",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "simple picture memory game",
   "main": "main.js",
   "scripts": {
