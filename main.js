@@ -80,7 +80,7 @@ function createWindow ()
   { width: 1000,
     height: 700, 
     show: false,
-    icon: path.join(__dirname, 'assets', 'png', 'brains-icon.png'), 
+    icon: path.join(__dirname, 'assets', 'png', 'app.png'), 
     webPreferences: { nodeIntegration: true }
   });
 
