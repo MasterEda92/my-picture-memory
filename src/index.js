@@ -28,12 +28,12 @@ function createFlipCardHtml (value)
 
     // create HTML block
     var newElem = $(
-    `<div class="mix col-sm-3 my-4 py-3">
+    `<div class="mix col-sm-2 my-4 py-3">
         <div class="flip_card" id="${cardId}" my-4>
             <div class="front" my-4>
                 <img src="../img/blank.png" width="100%" alt="img" class="img-thumbnail" id="img_f${cardId}" my-4>
             </div>
-            <div class="back"my-4>
+            <div class="back" my-4>
                 <img src="${value}" alt="img" class="img-thumbnail" id="img_b${cardId}" my-4>
             </div>
         </div>
