@@ -1,0 +1,16 @@
+.flip_card:hover
+{
+    cursor: pointer;
+}
+
+#picture-box
+{
+    background-color: #4B4B4B;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+body 
+{
+    background-color: #dddddd;
+}
